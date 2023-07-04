@@ -24,6 +24,20 @@ export default function App() {
     };
     loadOpenSea();
   }, []);
+  
+  useEffect(() => {
+    const loadOpenSea = async () => {
+      const provider = new Web3.providers.HttpProvider(
+        "https://mainnet.infura.io/v3/PROJECT_ID"
+      );
+      const seaport = new OpenSeaSDK(provider, {
+        networkName: Network.Main,
+        apiKey: "YOUR API KEY",
+      });
+      setOpenSea(seaport);
+    };
+    loadOpenSea();
+  }, []);
 
   {
     /* this function sets up a connection to the Ethereum blockchain via the Infura API, and creates an instance of the OpenSeaPort class
